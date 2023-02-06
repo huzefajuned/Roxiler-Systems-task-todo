@@ -1,0 +1,57 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    font-family: fantasy;
+    position: sticky;
+    top: 0px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    height: 4rem;
+}
+
+.logo {
+    width: 20vw;
+}
+
+.logo>h2 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: rgb(24, 163, 54);
+    border: 1px solid rgb(255, 255, 255);
+    padding: 2px;
+}
+
+.logo>h2:hover {
+    box-shadow: rgba(67, 58, 58, 0.35) 0px 5px 1px;
+}
+
+.logo>h2>span {
+    font-size: 25px;
+    color: rgb(136, 39, 136);
+    cursor: pointer;
+    text-shadow: 1px 3px 2px #c5d441;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.search {
+    width: 50vw;
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 4px;
+}
+
+.search>input {
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(195, 194, 194);
+    padding: 5px;
+    font-size: 14px;
+    color: #000000;
+    font-family: monospace;
+}

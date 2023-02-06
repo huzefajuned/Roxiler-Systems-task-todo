@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    width: 400px;
+    height: 400px;
+    margin: 25vh auto;
+    text-align: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container>img {
+    width: 100%;
+    /* background-color: aqua; */
+    padding: 20px;
+}
+
+
+/* media query for breakpoint  'max-width:360px' */
+
+@media screen and (max-width: 360px) {
+    .container {
+        display: flex;
+        width: 150px;
+        height: 150px;
+        margin: 100px auto;
+        text-align: center;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .container>img {
+        width: 100%;
+    }
+}
