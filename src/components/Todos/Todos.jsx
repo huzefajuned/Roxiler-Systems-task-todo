@@ -11,11 +11,12 @@ const Todos = () => {
   const [loading, setLoading] = useState(false);
   setTimeout(() => {
     setLoading(true);
-  }, 1900);
+  }, 1000);
 
   //fixing todo length to 10 todos per loading...
   const [fixedTodo, setFixedTodo] = useState(10);
   const showMore = () => {
+    setLoading(false)
     setFixedTodo((preValue) => preValue + 6);
   };
   // popUp Todo
