@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "../Todos/Todos.module.css";
 import { TiTick } from "react-icons/ti";
-import ViewTodo from "../ViewTodo/ViewTodo";
 import Loading from "../Loading/Loading";
+import PopUp from "../PopUp/PopUp";
 
 const Todos = () => {
   //preloader
@@ -13,17 +13,24 @@ const Todos = () => {
     setLoading(true);
   }, 1900);
 
-  const [current, setCurrent] = useState({});
-  const [id, setId] = useState();
-  const [title, setTitle] = useState();
-  const [isTrue, setIsTrue] = useState(false);
+  //fixing todo length to 10 todos per loading...
+  const [fixedTodo, setFixedTodo] = useState(10);
+  const showMore = () => {
+    setFixedTodo((preValue) => preValue + 6);
+  };
+  // popUp Todo
+  const [open, setOpen] = useState(false);
   const onPopup = (id, title) => {
     setId(id);
     setTitle(title);
-    setIsTrue(true);
+    setOpen(true);
   };
-  console.log(title);
 
+  const [current, setCurrent] = useState({});
+  const [id, setId] = useState();
+  const [title, setTitle] = useState();
+
+  // api data
   const [apiData, setApiData] = useState([]);
   useEffect(() => {
     data();
@@ -69,7 +76,7 @@ const Todos = () => {
                 <p>Action</p>
               </div>
               <div className={styles.main_Card}>
-                {apiData?.map((data, i) => {
+                {apiData?.slice(0, fixedTodo).map((data, i) => {
                   const { id, title, completed } = data;
                   // console.log(data);
                   return (
@@ -85,33 +92,32 @@ const Todos = () => {
                           <button onClick={() => onPopup(id, title)}>
                             View Todo
                           </button>
+                          {/* <button onClick={() => setOpen(true)}>
+                            View Todo
+                          </button> */}
+                          {open ? (
+                            <PopUp
+                              current={current}
+                              title={title}
+                              open={open}
+                              setOpen={setOpen}
+                            />
+                          ) : null}
                         </div>
                       </div>
                     </>
                   );
                 })}
               </div>
-            </div>
-            <div className={styles.right_Container}>
-              {isTrue == 1 ? (
-                <>
-                  <ViewTodo
-                    current={current}
-                    title={title}
-                    isTrue={isTrue}
-                    setIsTrue={setIsTrue}
-                  />
-                </>
-              ) : (
-                ""
-              )}
+              <div className={styles.moreBtn}>
+                <button onClick={() => showMore()}>More...</button>
+              </div>
             </div>
           </div>
         </>
       ) : (
         <Loading />
       )}
-      s
     </>
   );
 };

@@ -6,7 +6,7 @@ const Nav = () => {
     <div className={styles.container}>
       <div className={styles.logo}>
         <h2>
-          Rox- <span>Todo</span>
+          Rox-iler <span>Todo</span>
         </h2>
       </div>
       <div className={styles.search}>
